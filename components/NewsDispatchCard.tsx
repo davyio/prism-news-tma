@@ -28,10 +28,38 @@ export const NewsDispatchCard: React.FC<NewsDispatchCardProps> = ({
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+  const [isDeepRefracting, setIsDeepRefracting] = useState(false);
+  const [customPerspective, setCustomPerspective] = useState<RefractedPerspective | null>(null);
 
-  // Generate perspective on the fly
-  const perspective = generateHeuristicPerspective(news, activePov, currentVoice, currentLang);
+  // Generate baseline perspective on the fly, overridden if deep refracted
+  const defaultPerspective = generateHeuristicPerspective(news, activePov, currentVoice, currentLang);
+  const perspective = customPerspective || defaultPerspective;
   const povMeta = POV_DEFINITIONS[activePov];
+
+  const handleDeepRefract = async () => {
+    triggerHaptic('medium');
+    setIsDeepRefracting(true);
+    try {
+      const res = await fetch('/api/news/refract', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          news,
+          pov: activePov,
+          voice: currentVoice,
+          language: currentLang,
+        })
+      });
+      const data = await res.json();
+      if (data.success && data.perspective) {
+        setCustomPerspective(data.perspective);
+      }
+    } catch (err) {
+      console.warn('[NewsDispatchCard] Deep refract fallback:', err);
+    } finally {
+      setIsDeepRefracting(false);
+    }
+  };
 
   const handleAudioPreview = () => {
     triggerHaptic('medium');
@@ -194,6 +222,25 @@ export const NewsDispatchCard: React.FC<NewsDispatchCardProps> = ({
             <ExternalLink className="w-3.5 h-3.5" />
             <span className="text-[10px] font-mono">SOURCE</span>
           </a>
+
+          {/* Live AI Deep Refract Trigger */}
+          <button
+            onClick={handleDeepRefract}
+            disabled={isDeepRefracting}
+            className={`p-1.5 rounded-lg border transition-all flex items-center space-x-1 ${
+              customPerspective
+                ? 'bg-emerald-500/20 border-emerald-500/40 text-emerald-300'
+                : isDeepRefracting
+                ? 'bg-white/20 border-white/40 text-white animate-pulse'
+                : 'bg-white/[0.03] hover:bg-white/[0.08] border-white/[0.06] text-neutral-400 hover:text-white'
+            }`}
+            title="Live AI Refract"
+          >
+            <Zap className={`w-3.5 h-3.5 ${isDeepRefracting ? 'animate-spin' : ''}`} />
+            <span className="text-[10px] font-mono">
+              {isDeepRefracting ? 'REFRACTING...' : customPerspective ? 'AI SYNTH' : 'AI'}
+            </span>
+          </button>
         </div>
 
         {/* Expand / Collapse toggle */}
