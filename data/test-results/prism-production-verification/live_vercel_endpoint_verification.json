@@ -1,0 +1,66 @@
+{
+  "timestamp": "2026-09-22T13:20:09.999Z",
+  "host": "https://prism-news-tma.vercel.app",
+  "endpoints": {
+    "root": {
+      "status": 200,
+      "contentLength": "13718"
+    },
+    "news_trending": {
+      "status": 200,
+      "count": 20
+    },
+    "news_refract": {
+      "status": 200,
+      "perspective": {
+        "pov": "DEGEN",
+        "label": "Crypto Maximalist",
+        "tagline": "Fiat Debasement & Sovereign Asymmetry",
+        "badgeColor": "#8b5cf6",
+        "headline": "[FR FR NO CAP] Send It or Get Rekt: The Alpha Angle on Autonomous Agent Clusters Execute Multi-Day Archit",
+        "summary": "Massive volatility catalyst unlocking asymmetrical on-chain leverage. Fiat debasement forces capital into permissionless liquidity venues. Swarm architectures replace single prompt runs.",
+        "keyTakeaways": [
+          "Bro really thought... Fiat debasement is accelerating; this creates an immediate rotation into on-chain beta. (it's actually giving high key)",
+          "Bro really thought... High-leverage perps and memetic derivative instruments will front-run traditional equity markets. (it's actually giving high key)",
+          "Bro really thought... Smart contracts bypass institutional gatekeepers entirely. (it's actually giving high key)"
+        ],
+        "bullCase": "Liquidity floods into the ecosystem, driving an explosive 20x re-rating.",
+        "bearCase": "Flash liquidation cascade wipes out overleveraged retail margin longs.",
+        "sentimentScore": 65
+      }
+    },
+    "stars_invoice": {
+      "status": 200,
+      "invoice": {
+        "success": true,
+        "invoiceLink": "https://t.me/$prism_sub_live_user_001_1790083210070?start=invoice_simulated",
+        "starsPrice": 150,
+        "durationDays": 30,
+        "tier": {
+          "id": "prism-black-monthly",
+          "name": "PRISM Black Inner Circle",
+          "starsPrice": 150,
+          "durationDays": 30,
+          "features": [
+            "Everything in Weekly Pass",
+            "Unrestricted Redacted Dossiers",
+            "Custom Agenda Architect (Custom Bias Sliders)",
+            "High-Definition Audio Briefings",
+            "Priority Gemini 3.8 Pro Processing",
+            "Direct Telegram Story Card Watermark Scrub"
+          ]
+        }
+      }
+    },
+    "tonconnect_manifest": {
+      "status": 200,
+      "manifest": {
+        "url": "https://prism-news-tma.vercel.app",
+        "name": "PRISM News",
+        "iconUrl": "https://prism-news-tma.vercel.app/icons/prism-monolith.png",
+        "termsOfUseUrl": "https://prism-news-tma.vercel.app/terms",
+        "privacyPolicyUrl": "https://prism-news-tma.vercel.app/privacy"
+      }
+    }
+  }
+}

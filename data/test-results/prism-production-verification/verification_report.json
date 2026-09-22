@@ -1,0 +1,253 @@
+{
+  "timestamp": "2026-09-22T12:49:01.464Z",
+  "durationMs": 8714,
+  "environment": "standalone-production-candidate",
+  "ingestion": {
+    "totalItems": 20,
+    "sampleSources": [
+      "Hacker News",
+      "Google Global News"
+    ],
+    "topStory": {
+      "title": "MiMo v2.6",
+      "source": "Hacker News",
+      "velocity": 99
+    }
+  },
+  "spectrumPerspectivesSample": {
+    "newsId": "hn_49792730",
+    "originalTitle": "MiMo v2.6",
+    "language": "en",
+    "voice": "EXECUTIVE",
+    "activePov": "FACT",
+    "perspectives": {
+      "OPTIMIST": {
+        "pov": "OPTIMIST",
+        "label": "Tech Accelerationist",
+        "tagline": "Silicon Valley Exponentialism & Boundless TAM",
+        "badgeColor": "#10b981",
+        "headline": "Accelerating Frontier: How MiMo v2.6 Unlocks Exponential TAM",
+        "summary": "A pivotal inflection point validating exponential innovation. Engineers and founders are capitalizing on friction-free distribution to compound productivity. Discussion trending on Hacker News with 952 upvotes and 429 active comments.",
+        "keyTakeaways": [
+          "Radically drives down marginal operational cost across distributed architectures.",
+          "Accelerates software flywheel velocity by orders of magnitude.",
+          "Positions first-movers to capture dominant platform network effects."
+        ],
+        "bullCase": "Global adoption compounds at 200%+ CAGR, redefining industry benchmarks.",
+        "bearCase": "Temporary infrastructure bottlenecks delay full production deployment by 3-6 months.",
+        "sentimentScore": 85
+      },
+      "CYNIC": {
+        "pov": "CYNIC",
+        "label": "Wall Street Short-Seller",
+        "tagline": "Capital Destruction & Regulatory Reckoning",
+        "badgeColor": "#ef4444",
+        "headline": "The Bubble Unravels: Behind the Illusion of MiMo v2.6",
+        "summary": "A classic speculative climax masking deteriorating unit economics, regulatory vulnerabilities, and insider exit liquidity. Discussion trending on Hacker News with 952 upvotes and 429 active comments.",
+        "keyTakeaways": [
+          "Unit economics fail under rigorous cost-of-capital scrutiny.",
+          "Regulatory anti-trust subpoenas and compliance overhead will choke operating margins.",
+          "Smart money insiders are actively unloading positions into retail euphoria."
+        ],
+        "bullCase": "Subsidized capital prolongs the exit window before structural re-pricing occurs.",
+        "bearCase": "Cascading liquidity squeeze triggers aggressive multiple compression down to tangible book value.",
+        "sentimentScore": -82
+      },
+      "DEGEN": {
+        "pov": "DEGEN",
+        "label": "Crypto Maximalist",
+        "tagline": "Fiat Debasement & Sovereign Asymmetry",
+        "badgeColor": "#8b5cf6",
+        "headline": "Send It or Get Rekt: The Alpha Angle on MiMo v2.6",
+        "summary": "Massive volatility catalyst unlocking asymmetrical on-chain leverage. Fiat debasement forces capital into permissionless liquidity venues. Discussion trending on Hacker News with 952 upvotes and 429 active comments.",
+        "keyTakeaways": [
+          "Fiat debasement is accelerating; this creates an immediate rotation into on-chain beta.",
+          "High-leverage perps and memetic derivative instruments will front-run traditional equity markets.",
+          "Smart contracts bypass institutional gatekeepers entirely."
+        ],
+        "bullCase": "Liquidity floods into the ecosystem, driving an explosive 20x re-rating.",
+        "bearCase": "Flash liquidation cascade wipes out overleveraged retail margin longs.",
+        "sentimentScore": 65
+      },
+      "REALIST": {
+        "pov": "REALIST",
+        "label": "Geopolitical Realist",
+        "tagline": "Statecraft, Supply Chains & Sovereign Hegemony",
+        "badgeColor": "#3b82f6",
+        "headline": "Sovereign Chessboard: Strategic Realignments Triggered by MiMo v2.6",
+        "summary": "A calculated geopolitical maneuver realigning state sovereignty, strategic supply chain defense, and cross-border resource leverage. Discussion trending on Hacker News with 952 upvotes and 429 active comments.",
+        "keyTakeaways": [
+          "Critical national security interest; state actors will intervene to secure domestic capability.",
+          "Supply chain weaponization forces multi-polar bifurcations between trading blocs.",
+          "Institutional leverage dictates regulatory capture and strategic sovereignty."
+        ],
+        "bullCase": "Bilateral treaty protection and sovereign subsidies insulate core operators.",
+        "bearCase": "Export restrictions and retaliatory tariffs fragment the global market permanently.",
+        "sentimentScore": 5
+      },
+      "TABLOID": {
+        "pov": "TABLOID",
+        "label": "BuzzFeed Sensationalist",
+        "tagline": "Viral Outrage & Insane Insider Drama",
+        "badgeColor": "#f59e0b",
+        "headline": "EXPOSED: What They Aren't Telling You About MiMo v2.6!",
+        "summary": "BOMBSHELL: Insiders are panicking behind closed doors as shockwaves rip through the industry. You will not believe who is pulling the strings. Discussion trending on Hacker News with 952 upvotes and 429 active comments.",
+        "keyTakeaways": [
+          "Shocking secret meetings leaked from inside executive inner sanctums.",
+          "Whistleblowers break silence on chaotic internal power struggles.",
+          "The drama is only beginning — expect high-profile resignations within days."
+        ],
+        "bullCase": "The viral attention machine explodes engagement through the roof.",
+        "bearCase": "Reputational fallout causes high-profile sponsors to pull out immediately.",
+        "sentimentScore": 40
+      },
+      "FACT": {
+        "pov": "FACT",
+        "label": "Radical Objective",
+        "tagline": "Zero Adjectives & Verified Empirical Data",
+        "badgeColor": "#e2e8f0",
+        "headline": "Verified Intelligence: MiMo v2.6",
+        "summary": "Verified chronology confirms documented developments in accordance with filed disclosures and official communications. Discussion trending on Hacker News with 952 upvotes and 429 active comments.",
+        "keyTakeaways": [
+          "Source documentation verified from primary feed: Hacker News.",
+          "Timestamp registered at 01:12 PM UTC with confirmed transmission ID.",
+          "All analytical claims isolated strictly from verifiable factual occurrences."
+        ],
+        "bullCase": "Execution proceeds strictly according to documented project specifications.",
+        "bearCase": "Variance from historical baseline metrics remains within standard confidence intervals.",
+        "sentimentScore": 0
+      }
+    }
+  },
+  "multiLingualSample": {
+    "es": {
+      "pov": "OPTIMIST",
+      "label": "Tech Accelerationist",
+      "tagline": "Silicon Valley Exponentialism & Boundless TAM",
+      "badgeColor": "#10b981",
+      "headline": "Accelerating Frontier: How MiMo v2.6 Unlocks Exponential TAM",
+      "summary": "Un punto de inflexión crucial que valida la innovación exponencial y el crecimiento acelerado. Discussion trending on Hacker News with 952 upvotes and 429 active comments.",
+      "keyTakeaways": [
+        "Radically drives down marginal operational cost across distributed architectures.",
+        "Accelerates software flywheel velocity by orders of magnitude.",
+        "Positions first-movers to capture dominant platform network effects."
+      ],
+      "bullCase": "Global adoption compounds at 200%+ CAGR, redefining industry benchmarks.",
+      "bearCase": "Temporary infrastructure bottlenecks delay full production deployment by 3-6 months.",
+      "sentimentScore": 85
+    },
+    "zh": {
+      "pov": "CYNIC",
+      "label": "Wall Street Short-Seller",
+      "tagline": "Capital Destruction & Regulatory Reckoning",
+      "badgeColor": "#ef4444",
+      "headline": "The Bubble Unravels: Behind the Illusion of MiMo v2.6",
+      "summary": "这是一场典型的投机狂热，掩盖了恶化的单位经济效益与内幕资金套现离场。 Discussion trending on Hacker News with 952 upvotes and 429 active comments.",
+      "keyTakeaways": [
+        "Unit economics fail under rigorous cost-of-capital scrutiny.",
+        "Regulatory anti-trust subpoenas and compliance overhead will choke operating margins.",
+        "Smart money insiders are actively unloading positions into retail euphoria."
+      ],
+      "bullCase": "Subsidized capital prolongs the exit window before structural re-pricing occurs.",
+      "bearCase": "Cascading liquidity squeeze triggers aggressive multiple compression down to tangible book value.",
+      "sentimentScore": -82
+    },
+    "fr": {
+      "pov": "FACT",
+      "label": "Radical Objective",
+      "tagline": "Zero Adjectives & Verified Empirical Data",
+      "badgeColor": "#e2e8f0",
+      "headline": "Verified Intelligence: MiMo v2.6",
+      "summary": "Chronologie factuelle confirmée par les déclarations officielles et les données vérifiées. Discussion trending on Hacker News with 952 upvotes and 429 active comments.",
+      "keyTakeaways": [
+        "Source documentation verified from primary feed: Hacker News.",
+        "Timestamp registered at 01:12 PM UTC with confirmed transmission ID.",
+        "All analytical claims isolated strictly from verifiable factual occurrences."
+      ],
+      "bullCase": "Execution proceeds strictly according to documented project specifications.",
+      "bearCase": "Variance from historical baseline metrics remains within standard confidence intervals.",
+      "sentimentScore": 0
+    }
+  },
+  "voiceModulationSample": {
+    "genz": {
+      "pov": "DEGEN",
+      "label": "Crypto Maximalist",
+      "tagline": "Fiat Debasement & Sovereign Asymmetry",
+      "badgeColor": "#8b5cf6",
+      "headline": "[FR FR NO CAP] Send It or Get Rekt: The Alpha Angle on MiMo v2.6",
+      "summary": "Massive volatility catalyst unlocking asymmetrical on-chain leverage. Fiat debasement forces capital into permissionless liquidity venues. Discussion trending on Hacker News with 952 upvotes and 429 active comments.",
+      "keyTakeaways": [
+        "Bro really thought... Fiat debasement is accelerating; this creates an immediate rotation into on-chain beta. (it's actually giving high key)",
+        "Bro really thought... High-leverage perps and memetic derivative instruments will front-run traditional equity markets. (it's actually giving high key)",
+        "Bro really thought... Smart contracts bypass institutional gatekeepers entirely. (it's actually giving high key)"
+      ],
+      "bullCase": "Liquidity floods into the ecosystem, driving an explosive 20x re-rating.",
+      "bearCase": "Flash liquidation cascade wipes out overleveraged retail margin longs.",
+      "sentimentScore": 65
+    },
+    "noir": {
+      "pov": "REALIST",
+      "label": "Geopolitical Realist",
+      "tagline": "Statecraft, Supply Chains & Sovereign Hegemony",
+      "badgeColor": "#3b82f6",
+      "headline": "Case File: Sovereign Chessboard: Strategic Realignments Triggered by MiMo v2.6 in the Rain",
+      "summary": "A calculated geopolitical maneuver realigning state sovereignty, strategic supply chain defense, and cross-border resource leverage. Discussion trending on Hacker News with 952 upvotes and 429 active comments.",
+      "keyTakeaways": [
+        "The smoke clears: Critical national security interest; state actors will intervene to secure domestic capability.",
+        "The smoke clears: Supply chain weaponization forces multi-polar bifurcations between trading blocs.",
+        "The smoke clears: Institutional leverage dictates regulatory capture and strategic sovereignty."
+      ],
+      "bullCase": "Bilateral treaty protection and sovereign subsidies insulate core operators.",
+      "bearCase": "Export restrictions and retaliatory tariffs fragment the global market permanently.",
+      "sentimentScore": 5
+    }
+  },
+  "monetization": {
+    "weeklyPass": {
+      "invoiceLink": "https://t.me/$prism_sub_user_test_881_1790081341461?start=invoice_simulated",
+      "starsPrice": 45,
+      "durationDays": 7
+    },
+    "blackPass": {
+      "invoiceLink": "https://t.me/$prism_sub_user_test_881_1790081341461?start=invoice_simulated",
+      "starsPrice": 150,
+      "durationDays": 30
+    },
+    "tiers": {
+      "prism-pass-weekly": {
+        "id": "prism-pass-weekly",
+        "name": "PRISM Weekly Pass",
+        "starsPrice": 45,
+        "durationDays": 7,
+        "features": [
+          "Full Multi-Spectrum Ingestion",
+          "All 6 Political & Market POVs",
+          "Instant 8-Language Refraction",
+          "Removal of Native Ad Capsules"
+        ]
+      },
+      "prism-black-monthly": {
+        "id": "prism-black-monthly",
+        "name": "PRISM Black Inner Circle",
+        "starsPrice": 150,
+        "durationDays": 30,
+        "features": [
+          "Everything in Weekly Pass",
+          "Unrestricted Redacted Dossiers",
+          "Custom Agenda Architect (Custom Bias Sliders)",
+          "High-Definition Audio Briefings",
+          "Priority Gemini 3.8 Pro Processing",
+          "Direct Telegram Story Card Watermark Scrub"
+        ]
+      }
+    }
+  },
+  "tonConnect": {
+    "url": "https://prism-news-tma.vercel.app",
+    "name": "PRISM News",
+    "iconUrl": "https://prism-news-tma.vercel.app/icons/prism-monolith.png",
+    "termsOfUseUrl": "https://prism-news-tma.vercel.app/terms",
+    "privacyPolicyUrl": "https://prism-news-tma.vercel.app/privacy"
+  }
+}
