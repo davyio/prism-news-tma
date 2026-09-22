@@ -11,15 +11,33 @@ const CACHE_TTL_MS = 60 * 1000; // 60 seconds
 
 function cleanHtml(raw: string): string {
   if (!raw) return '';
-  return raw
-    .replace(/<[^>]*>/g, ' ')
+  let text = raw
     .replace(/&quot;/g, '"')
     .replace(/&#39;/g, "'")
     .replace(/&amp;/g, '&')
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&#036;/g, '$')
+    .replace(/&#x27;/g, "'")
+    .replace(/&#8217;/g, "'")
+    .replace(/&#8220;/g, '"')
+    .replace(/&#8221;/g, '"');
+
+  // Strip all HTML tags
+  text = text.replace(/<[^>]*>/g, ' ');
+
+  // Strip raw URLs completely so they never leak into preview text
+  text = text.replace(/https?:\/\/[^\s"'<>]+/gi, '');
+
+  // Strip common RSS filler and publisher metadata
+  text = text
+    .replace(/View Full Coverage on Google News/gi, '')
+    .replace(/Google News/gi, '')
     .replace(/\s+/g, ' ')
     .trim();
+
+  return text;
 }
 
 /**
@@ -34,8 +52,10 @@ function parseRssXml(xml: string, sourceName: string, category: 'TECH' | 'MARKET
     const rawItem = itemMatches[i];
     
     // Extract title
+    // Clean title and remove trailing publisher tag (e.g. "- Reuters")
     const titleMatch = rawItem.match(/<title>(?:<!\[CDATA\[(.*?)\]\]>|(.*?))<\/title>/i);
-    const title = cleanHtml(titleMatch ? (titleMatch[1] || titleMatch[2] || '') : '');
+    const rawTitle = cleanHtml(titleMatch ? (titleMatch[1] || titleMatch[2] || '') : '');
+    const title = rawTitle.replace(/\s+-\s+[A-Za-z0-9\s.]{2,20}$/, '').trim();
     if (!title || title.length < 5) continue;
 
     // Extract link
@@ -44,7 +64,10 @@ function parseRssXml(xml: string, sourceName: string, category: 'TECH' | 'MARKET
 
     // Extract description/snippet
     const descMatch = rawItem.match(/<description>(?:<!\[CDATA\[(.*?)\]\]>|(.*?))<\/description>/i);
-    const snippet = cleanHtml(descMatch ? (descMatch[1] || descMatch[2] || '') : '');
+    const rawSnippet = cleanHtml(descMatch ? (descMatch[1] || descMatch[2] || '') : '');
+    const effectiveSnippet = (rawSnippet && rawSnippet.length > 25 && !rawSnippet.toLowerCase().includes(title.toLowerCase().slice(0, 30)))
+      ? rawSnippet.slice(0, 220).trim()
+      : `Verified developments and contextual intelligence regarding ${title.slice(0, 80)}.`;
 
     // Extract pubDate
     const dateMatch = rawItem.match(/<pubDate>(.*?)<\/pubDate>/i);
@@ -73,7 +96,7 @@ function parseRssXml(xml: string, sourceName: string, category: 'TECH' | 'MARKET
       category,
       pubDate: new Date(isoTimestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + ' UTC',
       isoTimestamp,
-      originalSnippet: snippet.slice(0, 240) || 'Breaking technological and macroeconomic shift developing across global markets.',
+      originalSnippet: effectiveSnippet,
       imageUrl,
       velocityScore,
       engagement: {

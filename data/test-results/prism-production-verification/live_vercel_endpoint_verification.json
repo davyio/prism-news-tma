@@ -1,39 +1,41 @@
 {
-  "timestamp": "2026-09-22T13:20:09.999Z",
+  "timestamp": "2026-09-22T14:25:56.708Z",
   "host": "https://prism-news-tma.vercel.app",
+  "botUsername": "PrismNewsAppBot",
+  "botMenuButton": {
+    "type": "web_app",
+    "text": "Open PRISM",
+    "web_app": {
+      "url": "https://prism-news-tma.vercel.app/"
+    }
+  },
   "endpoints": {
-    "root": {
+    "trending": {
       "status": 200,
-      "contentLength": "13718"
-    },
-    "news_trending": {
-      "status": 200,
-      "count": 20
-    },
-    "news_refract": {
-      "status": 200,
-      "perspective": {
-        "pov": "DEGEN",
-        "label": "Crypto Maximalist",
-        "tagline": "Fiat Debasement & Sovereign Asymmetry",
-        "badgeColor": "#8b5cf6",
-        "headline": "[FR FR NO CAP] Send It or Get Rekt: The Alpha Angle on Autonomous Agent Clusters Execute Multi-Day Archit",
-        "summary": "Massive volatility catalyst unlocking asymmetrical on-chain leverage. Fiat debasement forces capital into permissionless liquidity venues. Swarm architectures replace single prompt runs.",
-        "keyTakeaways": [
-          "Bro really thought... Fiat debasement is accelerating; this creates an immediate rotation into on-chain beta. (it's actually giving high key)",
-          "Bro really thought... High-leverage perps and memetic derivative instruments will front-run traditional equity markets. (it's actually giving high key)",
-          "Bro really thought... Smart contracts bypass institutional gatekeepers entirely. (it's actually giving high key)"
-        ],
-        "bullCase": "Liquidity floods into the ecosystem, driving an explosive 20x re-rating.",
-        "bearCase": "Flash liquidation cascade wipes out overleveraged retail margin longs.",
-        "sentimentScore": 65
+      "itemCount": 20,
+      "sampleItem": {
+        "id": "hn_49792730",
+        "title": "MiMo v2.6",
+        "sourceName": "Hacker News",
+        "sourceUrl": "https://mimo.xiaomi.com/mimo-v2-6",
+        "category": "TECH",
+        "pubDate": "08:12 PM UTC",
+        "isoTimestamp": 1790021532000,
+        "originalSnippet": "Discussion trending on Hacker News with 990 upvotes and 446 active comments.",
+        "velocityScore": 99,
+        "engagement": {
+          "impressions": "1782.0k",
+          "reads": 138600,
+          "shares": 11880
+        },
+        "isRedactedDossier": true
       }
     },
-    "stars_invoice": {
+    "starsInvoice": {
       "status": 200,
-      "invoice": {
+      "response": {
         "success": true,
-        "invoiceLink": "https://t.me/$prism_sub_live_user_001_1790083210070?start=invoice_simulated",
+        "invoiceLink": "https://t.me/$OENsBe1GkEVeAQAA8JS8b7hl7A0",
         "starsPrice": 150,
         "durationDays": 30,
         "tier": {
@@ -52,14 +54,26 @@
         }
       }
     },
-    "tonconnect_manifest": {
+    "aiRefract": {
       "status": 200,
-      "manifest": {
-        "url": "https://prism-news-tma.vercel.app",
-        "name": "PRISM News",
-        "iconUrl": "https://prism-news-tma.vercel.app/icons/prism-monolith.png",
-        "termsOfUseUrl": "https://prism-news-tma.vercel.app/terms",
-        "privacyPolicyUrl": "https://prism-news-tma.vercel.app/privacy"
+      "response": {
+        "success": true,
+        "perspective": {
+          "pov": "DEGEN",
+          "label": "Crypto Maximalist",
+          "tagline": "Fiat Debasement & Sovereign Asymmetry",
+          "badgeColor": "#8b5cf6",
+          "headline": "[FR FR NO CAP] Send It or Get Rekt: The Alpha Angle on MiMo v2.6",
+          "summary": "Massive volatility catalyst unlocking asymmetrical on-chain leverage. Fiat debasement forces capital into permissionless liquidity venues. Discussion trending on Hacker News with 990 upvotes and 446 active comments.",
+          "keyTakeaways": [
+            "Bro really thought... Fiat debasement is accelerating; this creates an immediate rotation into on-chain beta. (it's actually giving high key)",
+            "Bro really thought... High-leverage perps and memetic derivative instruments will front-run traditional equity markets. (it's actually giving high key)",
+            "Bro really thought... Smart contracts bypass institutional gatekeepers entirely. (it's actually giving high key)"
+          ],
+          "bullCase": "Liquidity floods into the ecosystem, driving an explosive 20x re-rating.",
+          "bearCase": "Flash liquidation cascade wipes out overleveraged retail margin longs.",
+          "sentimentScore": 65
+        }
       }
     }
   }

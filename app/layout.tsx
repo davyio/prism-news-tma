@@ -22,8 +22,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var saved = localStorage.getItem('prism_theme');
+                  var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+                  document.documentElement.setAttribute('data-theme', theme);
+                } catch(e) {}
+              })();
+            `,
+          }}
+        />
         {/* Telegram WebApp JavaScript SDK */}
         <Script
           src="https://telegram.org/js/telegram-web-app.js"
@@ -35,8 +48,8 @@ export default function RootLayout({
           strategy="lazyOnload"
         />
       </head>
-      <body className="min-h-screen bg-[#050508] text-slate-100 flex flex-col items-center">
-        <div className="w-full max-w-md min-h-screen flex flex-col relative pb-12 shadow-2xl">
+      <body className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] flex flex-col items-center justify-start transition-colors overflow-x-hidden antialiased">
+        <div className="w-full max-w-md min-h-screen flex flex-col relative pb-12 transition-all sm:my-6 sm:rounded-[38px] sm:border sm:border-[var(--border-subtle)] sm:shadow-[0_32px_80px_rgba(0,0,0,0.3)] sm:overflow-hidden bg-[var(--bg-primary)]">
           {children}
         </div>
       </body>

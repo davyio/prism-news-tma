@@ -4,7 +4,7 @@ import React from 'react';
 import { X, Check, Volume2 } from 'lucide-react';
 import { VoiceTone } from '@/lib/news/types';
 import { VOICE_PROMPTS } from '@/lib/ai/prompts';
-import { triggerHaptic } from '@/lib/telegram/haptics';
+import { playTactileFeedback } from '@/lib/telegram/haptics';
 
 interface ToneVoiceModalProps {
   isOpen: boolean;
@@ -49,19 +49,19 @@ export const ToneVoiceModal: React.FC<ToneVoiceModalProps> = ({
   ];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/60 backdrop-blur-sm animate-fade-in p-2 sm:p-4">
-      <div className="w-full max-w-md apple-glass rounded-3xl p-5 border border-white/10 flex flex-col space-y-4 shadow-2xl">
-        <div className="flex items-center justify-between border-b border-white/[0.06] pb-3">
+    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/60 backdrop-blur-sm p-2 sm:p-4">
+      <div className="w-full max-w-md apple-glass rounded-3xl p-5 border border-[var(--border-subtle)] flex flex-col space-y-4 shadow-2xl">
+        <div className="flex items-center justify-between border-b border-[var(--border-subtle)] pb-3">
           <div className="flex items-center space-x-2">
-            <Volume2 className="w-4 h-4 text-white" />
-            <h3 className="text-sm font-semibold tracking-tight text-white">NARRATIVE VOICE PERSONA</h3>
+            <Volume2 className="w-4 h-4 text-[var(--text-primary)]" />
+            <h3 className="text-sm font-semibold tracking-tight text-[var(--text-primary)]">NARRATIVE VOICE PERSONA</h3>
           </div>
           <button
             onClick={() => {
-              triggerHaptic('light');
+              playTactileFeedback('tap');
               onClose();
             }}
-            className="p-1 rounded-full bg-white/[0.06] text-neutral-400 hover:text-white"
+            className="p-1 rounded-full bg-[var(--bg-pill)] text-[var(--text-muted)] hover:text-[var(--text-primary)]"
           >
             <X className="w-4 h-4" />
           </button>
@@ -74,26 +74,26 @@ export const ToneVoiceModal: React.FC<ToneVoiceModalProps> = ({
               <button
                 key={v.id}
                 onClick={() => {
-                  triggerHaptic('medium');
+                  playTactileFeedback('pop');
                   onSelectVoice(v.id);
                   onClose();
                 }}
-                className={`w-full p-3 rounded-xl text-left border transition-all flex items-start justify-between ${
+                className={`w-full p-3 rounded-xl text-left border transition-all flex items-start justify-between shadow-sm ${
                   isSelected
-                    ? 'bg-white/10 border-white/30 text-white'
-                    : 'bg-white/[0.02] border-white/[0.04] text-neutral-300 hover:bg-white/[0.05]'
+                    ? 'bg-[var(--bg-card)] border-[var(--border-specular)] text-[var(--text-primary)]'
+                    : 'bg-[var(--bg-card-subtle)] border-[var(--border-subtle)] text-[var(--text-secondary)] hover:bg-[var(--bg-pill-hover)]'
                 }`}
               >
-                <div className="space-y-1 pr-2">
+                <div className="space-y-1 pr-2 text-break-boundary">
                   <div className="font-semibold text-xs flex items-center space-x-1.5">
-                    <span>{v.name}</span>
-                    {isSelected && <span className="text-[10px] font-mono text-emerald-400">ACTIVE</span>}
+                    <span className="text-[var(--text-primary)]">{v.name}</span>
+                    {isSelected && <span className="text-[10px] font-mono text-emerald-500 font-bold">ACTIVE</span>}
                   </div>
-                  <p className="text-[11px] text-neutral-400 leading-snug">{v.desc}</p>
-                  <p className="text-[10px] font-mono text-neutral-500 italic mt-1">&quot;{v.sample}&quot;</p>
+                  <p className="text-[11px] text-[var(--text-secondary)] leading-snug">{v.desc}</p>
+                  <p className="text-[10px] font-mono text-[var(--text-muted)] italic mt-1">&quot;{v.sample}&quot;</p>
                 </div>
 
-                {isSelected && <Check className="w-4 h-4 text-white shrink-0 mt-0.5" />}
+                {isSelected && <Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />}
               </button>
             );
           })}

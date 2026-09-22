@@ -16,6 +16,7 @@ import { getTelegramWebApp } from '@/lib/telegram/webapp-sdk';
 import { triggerHaptic } from '@/lib/telegram/haptics';
 
 export default function Home() {
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
   const [newsList, setNewsList] = useState<NewsItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -38,7 +39,7 @@ export default function Home() {
   const [selectedStoryPerspective, setSelectedStoryPerspective] = useState<RefractedPerspective | null>(null);
   const [isStoryModalOpen, setIsStoryModalOpen] = useState(false);
 
-  // Initialize Telegram WebApp
+  // Initialize Telegram WebApp & Load Persisted Preferences
   useEffect(() => {
     const tg = getTelegramWebApp();
     if (tg) {
@@ -46,8 +47,14 @@ export default function Home() {
       tg.expand();
     }
 
-    // Load persisted subscription state
     if (typeof window !== 'undefined') {
+      // Theme synchronization
+      const savedTheme = localStorage.getItem('prism_theme') as 'dark' | 'light' | null;
+      const initialTheme = savedTheme || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      setTheme(initialTheme);
+      document.documentElement.setAttribute('data-theme', initialTheme);
+
+      // Subscription & unlocked dossiers
       const savedSub = localStorage.getItem('prism_is_vip');
       if (savedSub === 'true') {
         setIsSubscribed(true);
@@ -64,6 +71,15 @@ export default function Home() {
 
     fetchNews();
   }, []);
+
+  const toggleTheme = () => {
+    const next = theme === 'dark' ? 'light' : 'dark';
+    setTheme(next);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('prism_theme', next);
+      document.documentElement.setAttribute('data-theme', next);
+    }
+  };
 
   const fetchNews = async (force = false) => {
     if (force) setIsRefreshing(true);
@@ -106,10 +122,12 @@ export default function Home() {
   }, [newsList, activeCategory]);
 
   return (
-    <main className="flex-1 flex flex-col w-full bg-[#050508]">
+    <main className="flex-1 flex flex-col w-full bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors min-h-screen">
       {/* Header */}
       <PrismHeader
         isSubscribed={isSubscribed}
+        theme={theme}
+        onToggleTheme={toggleTheme}
         onOpenSubscribe={() => setIsSubscribeModalOpen(true)}
         onOpenVoice={() => setIsVoiceModalOpen(true)}
         onOpenLang={() => setIsLangModalOpen(true)}
@@ -133,14 +151,14 @@ export default function Home() {
       />
 
       {/* Dispatches Feed */}
-      <div className="flex-1 px-4 py-4 space-y-4">
+      <div className="flex-1 px-3.5 py-4 space-y-4">
         {isLoading ? (
-          <div className="flex flex-col items-center justify-center py-20 space-y-3">
-            <div className="w-8 h-8 rounded-full border-2 border-white/20 border-t-white animate-spin" />
-            <p className="font-mono text-xs text-neutral-400">REFRACTING LIVE INTELLIGENCE...</p>
+          <div className="flex flex-col items-center justify-center py-24 space-y-3">
+            <div className="w-8 h-8 rounded-full border-2 border-[var(--border-subtle)] border-t-[var(--text-primary)] animate-spin" />
+            <p className="font-mono text-xs text-[var(--text-muted)]">REFRACTING LIVE INTELLIGENCE...</p>
           </div>
         ) : filteredNews.length === 0 ? (
-          <div className="text-center py-16 text-neutral-500 font-mono text-xs">
+          <div className="text-center py-20 text-[var(--text-muted)] font-mono text-xs">
             NO DISPATCHES MATCH CATEGORY FILTER
           </div>
         ) : (

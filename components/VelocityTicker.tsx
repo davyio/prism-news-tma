@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Flame, Zap, TrendingUp, RefreshCw } from 'lucide-react';
-import { triggerHaptic } from '@/lib/telegram/haptics';
+import { Flame, RefreshCw } from 'lucide-react';
+import { playTactileFeedback } from '@/lib/telegram/haptics';
 
 interface VelocityTickerProps {
   totalStories: number;
@@ -22,30 +22,30 @@ export const VelocityTicker: React.FC<VelocityTickerProps> = ({
   const categories = ['ALL', 'TECH', 'MARKETS', 'MACRO', 'CRYPTO'];
 
   return (
-    <div className="w-full px-4 pt-3 pb-2 flex flex-col space-y-2.5 border-b border-white/[0.04] bg-neutral-950/40">
+    <div className="w-full px-4 pt-3 pb-2.5 flex flex-col space-y-2 border-b border-[var(--border-subtle)] bg-[var(--bg-secondary)]/30 transition-colors">
       {/* Top Meta Bar */}
       <div className="flex items-center justify-between text-xs">
-        <div className="flex items-center space-x-1.5 text-neutral-400 font-mono text-[11px]">
-          <Flame className="w-3.5 h-3.5 text-amber-400" />
-          <span className="text-white font-medium">DISCOVERY STREAM</span>
-          <span className="text-neutral-600">•</span>
-          <span className="text-neutral-400">{totalStories} DISPATCHES</span>
+        <div className="flex items-center space-x-1.5 font-mono text-[11px]">
+          <Flame className="w-3.5 h-3.5 text-amber-500" />
+          <span className="text-[var(--text-primary)] font-medium">DISCOVERY STREAM</span>
+          <span className="text-[var(--text-muted)]">•</span>
+          <span className="text-[var(--text-secondary)]">{totalStories} DISPATCHES</span>
         </div>
 
         <button
           onClick={() => {
-            triggerHaptic('light');
+            playTactileFeedback('pop');
             onRefresh();
           }}
           disabled={isRefreshing}
-          className="flex items-center space-x-1 text-[11px] text-neutral-400 hover:text-white transition-colors"
+          className="flex items-center space-x-1 text-[11px] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
         >
-          <RefreshCw className={`w-3 h-3 ${isRefreshing ? 'animate-spin text-neutral-200' : ''}`} />
-          <span className="font-mono">{isRefreshing ? 'PULSING...' : 'SYNC'}</span>
+          <RefreshCw className={`w-3 h-3 ${isRefreshing ? 'animate-spin text-[var(--text-primary)]' : ''}`} />
+          <span className="font-mono">{isRefreshing ? 'SYNCING...' : 'SYNC'}</span>
         </button>
       </div>
 
-      {/* Category Pills (X Style Discovery) */}
+      {/* Category Pills (Apple / X Style Discovery) */}
       <div className="flex items-center space-x-1.5 overflow-x-auto no-scrollbar py-0.5">
         {categories.map((cat) => {
           const isActive = activeCategory === cat;
@@ -53,13 +53,13 @@ export const VelocityTicker: React.FC<VelocityTickerProps> = ({
             <button
               key={cat}
               onClick={() => {
-                triggerHaptic('light');
+                playTactileFeedback('tap');
                 onSelectCategory(cat);
               }}
-              className={`px-3 py-1 rounded-full text-xs font-medium tracking-tight whitespace-nowrap transition-all ${
+              className={`px-3 py-1 rounded-full text-xs font-medium tracking-tight whitespace-nowrap transition-all shadow-sm ${
                 isActive
-                  ? 'bg-white text-black font-semibold shadow-sm'
-                  : 'bg-white/[0.04] text-neutral-400 hover:text-neutral-200 hover:bg-white/[0.08] border border-white/[0.04]'
+                  ? 'bg-[var(--text-primary)] text-[var(--bg-primary)] font-semibold'
+                  : 'bg-[var(--bg-pill)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-pill-hover)] border border-[var(--border-subtle)]'
               }`}
             >
               {cat}
@@ -70,3 +70,4 @@ export const VelocityTicker: React.FC<VelocityTickerProps> = ({
     </div>
   );
 };
+

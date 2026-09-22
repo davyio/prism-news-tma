@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { X, Crown, Check, Zap, Sparkles } from 'lucide-react';
 import { SUBSCRIPTION_TIERS } from '@/lib/monetization/telegram-stars';
 import { getTelegramWebApp } from '@/lib/telegram/webapp-sdk';
-import { triggerHaptic, triggerHapticNotification } from '@/lib/telegram/haptics';
+import { triggerHaptic, triggerHapticNotification, playTactileFeedback } from '@/lib/telegram/haptics';
 
 interface StarsSubscriptionModalProps {
   isOpen: boolean;
@@ -23,7 +23,7 @@ export const StarsSubscriptionModal: React.FC<StarsSubscriptionModalProps> = ({
   if (!isOpen) return null;
 
   const handleCheckout = async () => {
-    triggerHaptic('heavy');
+    playTactileFeedback('chime');
     setIsLoading(true);
 
     try {
@@ -68,14 +68,14 @@ export const StarsSubscriptionModal: React.FC<StarsSubscriptionModalProps> = ({
   const currentTier = SUBSCRIPTION_TIERS[selectedTier];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md animate-fade-in p-4">
-      <div className="w-full max-w-sm apple-glass rounded-3xl p-6 border border-white/10 flex flex-col space-y-4 shadow-2xl relative">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md p-4">
+      <div className="w-full max-w-sm apple-glass rounded-3xl p-6 border border-[var(--border-subtle)] flex flex-col space-y-4 shadow-2xl relative text-break-boundary">
         <button
           onClick={() => {
-            triggerHaptic('light');
+            playTactileFeedback('tap');
             onClose();
           }}
-          className="absolute top-4 right-4 p-1.5 rounded-full bg-white/[0.06] text-neutral-400 hover:text-white"
+          className="absolute top-4 right-4 p-1.5 rounded-full bg-[var(--bg-pill)] text-[var(--text-muted)] hover:text-[var(--text-primary)]"
         >
           <X className="w-4 h-4" />
         </button>
@@ -86,8 +86,8 @@ export const StarsSubscriptionModal: React.FC<StarsSubscriptionModalProps> = ({
             <Crown className="w-6 h-6 text-black" />
           </div>
           <div>
-            <h3 className="font-semibold text-base tracking-tight text-white">PRISM BLACK INNER CIRCLE</h3>
-            <p className="text-xs text-neutral-400 font-sans mt-0.5">
+            <h3 className="font-semibold text-base tracking-tight text-[var(--text-primary)]">PRISM BLACK INNER CIRCLE</h3>
+            <p className="text-xs text-[var(--text-secondary)] font-sans mt-0.5">
               Unrestricted access to unredacted dossiers, custom bias sliders, and high-frequency refractions.
             </p>
           </div>
@@ -97,50 +97,50 @@ export const StarsSubscriptionModal: React.FC<StarsSubscriptionModalProps> = ({
         <div className="grid grid-cols-2 gap-2 pt-1">
           <button
             onClick={() => {
-              triggerHaptic('light');
+              playTactileFeedback('pop');
               setSelectedTier('prism-pass-weekly');
             }}
-            className={`p-3 rounded-2xl border text-left transition-all ${
+            className={`p-3 rounded-2xl border text-left transition-all shadow-sm ${
               selectedTier === 'prism-pass-weekly'
-                ? 'bg-white/15 border-white/40 text-white shadow-sm'
-                : 'bg-white/[0.03] border-white/[0.06] text-neutral-400 hover:bg-white/[0.06]'
+                ? 'bg-[var(--bg-card)] border-[var(--border-specular)] text-[var(--text-primary)] font-medium'
+                : 'bg-[var(--bg-card-subtle)] border-[var(--border-subtle)] text-[var(--text-secondary)] hover:bg-[var(--bg-pill-hover)]'
             }`}
           >
-            <span className="font-mono text-[10px] text-neutral-400 block uppercase">7-DAY PASS</span>
-            <span className="font-bold text-sm text-white block mt-0.5">45 STARS</span>
-            <span className="text-[10px] text-neutral-500 block">6.4 XTR / day</span>
+            <span className="font-mono text-[10px] text-[var(--text-muted)] block uppercase">7-DAY PASS</span>
+            <span className="font-bold text-sm text-[var(--text-primary)] block mt-0.5">45 STARS</span>
+            <span className="text-[10px] text-[var(--text-muted)] block">6.4 XTR / day</span>
           </button>
 
           <button
             onClick={() => {
-              triggerHaptic('light');
+              playTactileFeedback('pop');
               setSelectedTier('prism-black-monthly');
             }}
-            className={`p-3 rounded-2xl border text-left transition-all relative ${
+            className={`p-3 rounded-2xl border text-left transition-all relative shadow-sm ${
               selectedTier === 'prism-black-monthly'
-                ? 'bg-gradient-to-br from-amber-500/20 to-neutral-900 border-amber-500/50 text-white shadow-sm'
-                : 'bg-white/[0.03] border-white/[0.06] text-neutral-400 hover:bg-white/[0.06]'
+                ? 'bg-amber-500/10 border-amber-500/50 text-[var(--text-primary)] font-medium'
+                : 'bg-[var(--bg-card-subtle)] border-[var(--border-subtle)] text-[var(--text-secondary)] hover:bg-[var(--bg-pill-hover)]'
             }`}
           >
-            <span className="absolute -top-2 right-2 px-1.5 py-0.5 rounded-full bg-amber-400 text-black font-mono text-[8px] font-bold">
+            <span className="absolute -top-2 right-2 px-1.5 py-0.5 rounded-full bg-amber-400 text-black font-mono text-[8px] font-bold shadow-sm">
               BEST VALUE
             </span>
-            <span className="font-mono text-[10px] text-amber-400 block uppercase">30-DAY BLACK</span>
-            <span className="font-bold text-sm text-white block mt-0.5">150 STARS</span>
-            <span className="text-[10px] text-neutral-400 block">5.0 XTR / day</span>
+            <span className="font-mono text-[10px] text-amber-500 dark:text-amber-400 block uppercase">30-DAY BLACK</span>
+            <span className="font-bold text-sm text-[var(--text-primary)] block mt-0.5">150 STARS</span>
+            <span className="text-[10px] text-[var(--text-muted)] block">5.0 XTR / day</span>
           </button>
         </div>
 
         {/* Feature List */}
-        <div className="p-3 rounded-2xl bg-white/[0.02] border border-white/[0.04] space-y-2">
-          <span className="font-mono text-[10px] uppercase text-neutral-400 tracking-wider block">
+        <div className="p-3 rounded-2xl bg-[var(--bg-card-subtle)] border border-[var(--border-subtle)] space-y-2">
+          <span className="font-mono text-[10px] uppercase text-[var(--text-muted)] tracking-wider block">
             MEMBERSHIP PRIVILEGES:
           </span>
           <ul className="space-y-1.5">
             {currentTier.features.map((feat, idx) => (
-              <li key={idx} className="flex items-center space-x-2 text-xs text-neutral-200">
-                <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                <span>{feat}</span>
+              <li key={idx} className="flex items-center space-x-2 text-xs text-[var(--text-primary)]">
+                <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+                <span className="leading-snug">{feat}</span>
               </li>
             ))}
           </ul>
@@ -156,7 +156,7 @@ export const StarsSubscriptionModal: React.FC<StarsSubscriptionModalProps> = ({
           <span>{isLoading ? 'INITIATING STARS...' : `UNLOCK WITH ${currentTier.starsPrice} STARS`}</span>
         </button>
 
-        <p className="text-center font-mono text-[10px] text-neutral-500">
+        <p className="text-center font-mono text-[10px] text-[var(--text-muted)]">
           Instant activation • Backed by Telegram native Stars billing
         </p>
       </div>

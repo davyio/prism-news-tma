@@ -1,11 +1,13 @@
 'use client';
 
 import React from 'react';
-import { Sparkles, Crown, Volume2, Globe } from 'lucide-react';
-import { triggerHaptic } from '@/lib/telegram/haptics';
+import { Crown, Volume2, Globe, Sun, Moon } from 'lucide-react';
+import { playTactileFeedback } from '@/lib/telegram/haptics';
 
 interface PrismHeaderProps {
   isSubscribed: boolean;
+  theme: 'dark' | 'light';
+  onToggleTheme: () => void;
   onOpenSubscribe: () => void;
   onOpenVoice: () => void;
   onOpenLang: () => void;
@@ -15,6 +17,8 @@ interface PrismHeaderProps {
 
 export const PrismHeader: React.FC<PrismHeaderProps> = ({
   isSubscribed,
+  theme,
+  onToggleTheme,
   onOpenSubscribe,
   onOpenVoice,
   onOpenLang,
@@ -22,18 +26,18 @@ export const PrismHeader: React.FC<PrismHeaderProps> = ({
   currentVoice,
 }) => {
   return (
-    <header className="sticky top-0 z-40 w-full apple-glass border-b border-white/[0.06] px-4 py-3 flex items-center justify-between">
-      {/* Brand & Monolith Icon */}
+    <header className="sticky top-0 z-40 w-full apple-glass border-b px-3.5 py-2.5 flex items-center justify-between transition-colors">
+      {/* Brand & Monolith Hardware Emblem */}
       <div className="flex items-center space-x-2.5">
         <div className="w-7 h-7 rounded-xl bg-gradient-to-br from-neutral-200 via-neutral-400 to-neutral-700 flex items-center justify-center shadow-inner border border-white/20">
           <div className="w-2.5 h-2.5 bg-black rotate-45 rounded-[2px]" />
         </div>
         <div>
           <div className="flex items-center space-x-1.5">
-            <span className="font-semibold text-sm tracking-tight text-white">PRISM</span>
-            <span className="text-[10px] uppercase font-mono tracking-widest text-neutral-400">NEWS</span>
+            <span className="font-semibold text-sm tracking-tight text-[var(--text-primary)]">PRISM</span>
+            <span className="text-[10px] uppercase font-mono tracking-widest text-[var(--text-muted)]">NEWS</span>
           </div>
-          <div className="flex items-center space-x-1 text-[10px] text-neutral-500 font-mono">
+          <div className="flex items-center space-x-1 text-[10px] text-[var(--text-muted)] font-mono">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse-gentle" />
             <span>LIVE INTELLIGENCE</span>
           </div>
@@ -42,40 +46,57 @@ export const PrismHeader: React.FC<PrismHeaderProps> = ({
 
       {/* Action Switches */}
       <div className="flex items-center space-x-1.5">
+        {/* Day / Night Palette Mode Switch */}
+        <button
+          onClick={() => {
+            playTactileFeedback('toggle');
+            onToggleTheme();
+          }}
+          className="p-1.5 rounded-lg bg-[var(--bg-pill)] hover:bg-[var(--bg-pill-hover)] border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all flex items-center justify-center shadow-sm"
+          title={theme === 'dark' ? 'Switch to Day Palette' : 'Switch to Night Palette'}
+          aria-label="Toggle Day / Night Palette"
+        >
+          {theme === 'dark' ? (
+            <Sun className="w-3.5 h-3.5 text-amber-400 animate-in fade-in zoom-in duration-200" />
+          ) : (
+            <Moon className="w-3.5 h-3.5 text-indigo-500 animate-in fade-in zoom-in duration-200" />
+          )}
+        </button>
+
         {/* Voice Selector */}
         <button
           onClick={() => {
-            triggerHaptic('light');
+            playTactileFeedback('sheet');
             onOpenVoice();
           }}
-          className="px-2 py-1 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.06] flex items-center space-x-1 text-[11px] font-mono text-neutral-300 transition-all"
+          className="px-2 py-1 rounded-lg bg-[var(--bg-pill)] hover:bg-[var(--bg-pill-hover)] border border-[var(--border-subtle)] flex items-center space-x-1 text-[11px] font-mono text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all"
         >
-          <Volume2 className="w-3 h-3 text-neutral-400" />
+          <Volume2 className="w-3 h-3 opacity-70" />
           <span className="capitalize">{currentVoice.toLowerCase()}</span>
         </button>
 
         {/* Language Selector */}
         <button
           onClick={() => {
-            triggerHaptic('light');
+            playTactileFeedback('sheet');
             onOpenLang();
           }}
-          className="px-2 py-1 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.06] flex items-center space-x-1 text-[11px] font-mono text-neutral-300 transition-all uppercase"
+          className="px-2 py-1 rounded-lg bg-[var(--bg-pill)] hover:bg-[var(--bg-pill-hover)] border border-[var(--border-subtle)] flex items-center space-x-1 text-[11px] font-mono text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all uppercase"
         >
-          <Globe className="w-3 h-3 text-neutral-400" />
+          <Globe className="w-3 h-3 opacity-70" />
           <span>{currentLang}</span>
         </button>
 
         {/* Subscription VIP Button */}
         <button
           onClick={() => {
-            triggerHaptic('medium');
+            playTactileFeedback('chime');
             onOpenSubscribe();
           }}
-          className={`px-2.5 py-1 rounded-lg border flex items-center space-x-1 text-[11px] font-medium transition-all ${
+          className={`px-2.5 py-1 rounded-lg border flex items-center space-x-1 text-[11px] font-medium transition-all shadow-sm ${
             isSubscribed
-              ? 'bg-amber-500/10 border-amber-500/30 text-amber-300 shadow-sm'
-              : 'bg-white/10 hover:bg-white/15 border-white/20 text-white'
+              ? 'bg-amber-500/10 border-amber-500/30 text-amber-500 dark:text-amber-300'
+              : 'bg-[var(--text-primary)] text-[var(--bg-primary)] hover:opacity-90 border-transparent'
           }`}
         >
           <Crown className="w-3 h-3 text-amber-400" />
@@ -85,3 +106,4 @@ export const PrismHeader: React.FC<PrismHeaderProps> = ({
     </header>
   );
 };
+

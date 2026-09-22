@@ -1,0 +1,97 @@
+{
+  "timestamp": "2026-09-22T15:00:31.976Z",
+  "totalFetched": 20,
+  "sanitizationValidation": {
+    "passed": true,
+    "sampleItems": [
+      {
+        "id": "hn_49792730",
+        "title": "MiMo v2.6",
+        "source": "Hacker News",
+        "originalSnippet": "Discussion trending on Hacker News with 1002 upvotes and 452 active comments.",
+        "hasHtmlTags": false,
+        "hasRawUrls": false,
+        "refractedHeadline": "Verified Intelligence: MiMo v2.6",
+        "refractedSummary": "Verified chronology confirms documented developments in accordance with filed disclosures and official communications. Discussion trending on Hacker News with 1002 upvotes and 452 active comments.",
+        "snippetLength": 77
+      },
+      {
+        "id": "hn_49794615",
+        "title": "Spymarks, Not Watermarks",
+        "source": "Hacker News",
+        "originalSnippet": "Discussion trending on Hacker News with 584 upvotes and 139 active comments.",
+        "hasHtmlTags": false,
+        "hasRawUrls": false,
+        "refractedHeadline": "Verified Intelligence: Spymarks, Not Watermarks",
+        "refractedSummary": "Verified chronology confirms documented developments in accordance with filed disclosures and official communications. Discussion trending on Hacker News with 584 upvotes and 139 active comments.",
+        "snippetLength": 76
+      },
+      {
+        "id": "news_Q2FsbCBvZiBEdXR5",
+        "title": "Call of Duty's Activision to make next Halo game as Xbox cuts more jobs",
+        "source": "BBC News",
+        "originalSnippet": "The news comes as part of a \"reset\" announced by Xbox in July, with 3,600 planned job losses overall.",
+        "hasHtmlTags": false,
+        "hasRawUrls": false,
+        "refractedHeadline": "Verified Intelligence: Call of Duty's Activision to make next Halo game as Xbox cuts more jobs",
+        "refractedSummary": "Verified chronology confirms documented developments in accordance with filed disclosures and official communications. The news comes as part of a \"reset\" announced by Xbox in July, with 3,600 planned job losses overall.",
+        "snippetLength": 101
+      },
+      {
+        "id": "news_VHJ1bXAgaGVhZHMg",
+        "title": "Trump heads to U.N. looking for wins after a rough week",
+        "source": "Google Global News",
+        "originalSnippet": "Verified developments and contextual intelligence regarding Trump heads to U.N. looking for wins after a rough week.",
+        "hasHtmlTags": false,
+        "hasRawUrls": false,
+        "refractedHeadline": "Verified Intelligence: Trump heads to U.N. looking for wins after a rough week",
+        "refractedSummary": "Verified chronology confirms documented developments in accordance with filed disclosures and official communications. Verified developments and contextual intelligence regarding Trump heads to U.N. looking for wins after a rough week.",
+        "snippetLength": 116
+      },
+      {
+        "id": "news_4oCYVGhlIGZhdWx0",
+        "title": "‘The fault lines in our world are widening’, António Guterres warns as world leaders gather for UN General Assembly– live updates",
+        "source": "Google Global News",
+        "originalSnippet": "Verified developments and contextual intelligence regarding ‘The fault lines in our world are widening’, António Guterres warns as world lea.",
+        "hasHtmlTags": false,
+        "hasRawUrls": false,
+        "refractedHeadline": "Verified Intelligence: ‘The fault lines in our world are widening’, António Guterres warns as world leaders gather for UN General Assembly– live updates",
+        "refractedSummary": "Verified chronology confirms documented developments in accordance with filed disclosures and official communications. Verified developments and contextual intelligence regarding ‘The fault lines in our world are widening’, António Guterres warns as world lea.",
+        "snippetLength": 141
+      },
+      {
+        "id": "news_V2hpdGUgSG91c2Ug",
+        "title": "White House press ban - what is the pool and why is it in a row with Trump?",
+        "source": "Google Global News",
+        "originalSnippet": "Verified developments and contextual intelligence regarding White House press ban - what is the pool and why is it in a row with Trump?.",
+        "hasHtmlTags": false,
+        "hasRawUrls": false,
+        "refractedHeadline": "Verified Intelligence: White House press ban - what is the pool and why is it in a row with Trump?",
+        "refractedSummary": "Verified chronology confirms documented developments in accordance with filed disclosures and official communications. Verified developments and contextual intelligence regarding White House press ban - what is the pool and why is it in a row with Trump?.",
+        "snippetLength": 136
+      },
+      {
+        "id": "news_QXR0YWNrZXIgb3Bl",
+        "title": "Attacker opens fire near high school in western Turkiye, wounding 11",
+        "source": "Google Global News",
+        "originalSnippet": "Verified developments and contextual intelligence regarding Attacker opens fire near high school in western Turkiye, wounding 11.",
+        "hasHtmlTags": false,
+        "hasRawUrls": false,
+        "refractedHeadline": "Verified Intelligence: Attacker opens fire near high school in western Turkiye, wounding 11",
+        "refractedSummary": "Verified chronology confirms documented developments in accordance with filed disclosures and official communications. Verified developments and contextual intelligence regarding Attacker opens fire near high school in western Turkiye, wounding 11.",
+        "snippetLength": 129
+      },
+      {
+        "id": "news_TWFuIHNob3QgYnkg",
+        "title": "Man shot by ICE officer in Texas back in hospital, attorney says",
+        "source": "Google Global News",
+        "originalSnippet": "Verified developments and contextual intelligence regarding Man shot by ICE officer in Texas back in hospital, attorney says.",
+        "hasHtmlTags": false,
+        "hasRawUrls": false,
+        "refractedHeadline": "Verified Intelligence: Man shot by ICE officer in Texas back in hospital, attorney says",
+        "refractedSummary": "Verified chronology confirms documented developments in accordance with filed disclosures and official communications. Verified developments and contextual intelligence regarding Man shot by ICE officer in Texas back in hospital, attorney says.",
+        "snippetLength": 125
+      }
+    ]
+  }
+}
